@@ -1,20 +1,27 @@
 setup:
-	python3 -m venv venv
+	pipenv install -r requirements.txt
+	pipenv shell
 
 install:
 	pip install -r requirements.txt
 
 test:
-	python -m pytest -vv --cov=myreoplib tests/*.py
+	python manage.py test
+
+validate-circleci:
+	circleci config validate
+
+run-circleci-local:
+	circleci local execute
 
 lint:
-	pylint --disable=R,C config cli web
+	docker run --rm -i hadolint/hadolint < Dockerfile
+	pylint --disable=R,C config manage.py
 
 format:
 	python -m black config/*.py
 
-git-add:
+git-push:
 	git add .
-
-git-push-master:
+	git commit -m ${message}
 	git push -u origin master
