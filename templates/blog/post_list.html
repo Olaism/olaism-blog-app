@@ -10,11 +10,11 @@
                     <img src="../../static/assets/balloons.jpg" alt="" />
                 </div>
                 <div class="post-card-content">
-                    <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4>
+                    <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title|title }}</a></h4>
                     <p>{{ post.body|truncatechars:200 }}</p>
                 </div>
                 <div class="post-card-footer">
-                    <p>{{ post.author.username }}</p>
+                    <p>{{ post.author.username|title }}</p>
                     <p class="post-date">{{ post.publish|date:"d M, Y" }}</p>
                 </div>
             </div>
