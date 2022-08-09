@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+
+{% block title %}All Posts{% endblock %}
+
+{% block content %}
+    <section class="post-cards">
+        {% for post in posts %}
+            <div class="post-card">
+                <div class="post-card-header">
+                    <img src="../../static/assets/balloons.jpg" alt="" />
+                </div>
+                <div class="post-card-content">
+                    <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h4>
+                    <p>{{ post.body|truncatechars:200 }}</p>
+                </div>
+                <div class="post-card-footer">
+                    <p>{{ post.author.username }}</p>
+                    <p class="post-date">{{ post.publish|date:"d M, Y" }}</p>
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endblock content %}
