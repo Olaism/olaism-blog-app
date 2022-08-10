@@ -17,6 +17,10 @@ h4 {
     color: #aaa;
 }
 
+a {
+    text-decoration: none;
+}
+
 main {
     margin: 2em 0;
     min-height: 75vh;
