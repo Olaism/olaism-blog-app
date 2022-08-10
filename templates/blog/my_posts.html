@@ -1,0 +1,30 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    My posts
+{% endblock title %}
+
+
+{% block content %}
+    <h2>All my posts</h2>
+    {% for post in posts %}
+        <div class="post-circle">
+            <div class="post-circle-title">
+                <h4>{{ post.title }}</h4>
+            </div>
+            <div class="post-circle-buttons">
+                <a href="{% url 'publish_post' post.pk %}" class="btn btn-secondary">
+                    {% if post.status == 'draft' %}
+                        Publish
+                    {% else %}
+                        Unpublish
+                    {% endif %}
+                </a>
+                <a href="{% url 'post_update' post.pk %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Delete</a>
+            </div>
+        </div>
+    {% empty %}
+        <p>You have no posts yet.</p>
+    {% endfor %}
+{% endblock content %}

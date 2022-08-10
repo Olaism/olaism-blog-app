@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
 from django.utils.decorators import method_decorator
@@ -6,12 +6,12 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import (
     ListView,
     DetailView,
-    DeleteView,
 )
 
 from django.views.generic.edit import (
     CreateView,
-    UpdateView
+    UpdateView,
+    DeleteView,
 )
 
 from .models import Post
@@ -30,6 +30,15 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
     context_object_name = 'post'
+
+class MyPostsView(ListView):
+    model = Post
+    template_name = 'blog/my_posts.html'
+    context_object_name = 'posts'
+    paginate_by = 20
+
+    def get_queryset(self):
+        return Post.objects.filter(author=self.request.user)
 
 @method_decorator(login_required, name="dispatch")
 class PostCreateView(CreateView):
@@ -66,6 +75,21 @@ class PostDeleteView(DeleteView):
         if obj.author != self.request.user:
             raise PermissionDenied
         return super().dispatch(request, *args, **kwargs)
+
+@login_required
+def publish_post(request, pk):
+    posts = Post.objects.filter(author=request.user)
+    post = get_object_or_404(Post, pk=pk)
+    if post.author == request.user:
+        if post.status == 'draft':
+            post.status = 'published'
+            post.save()
+        else:
+            post.status = 'draft'
+            post.save()
+    else:
+        raise PermissionDenied
+    return render(request, 'blog/my_posts.html', {'posts': posts})
 
 def post_share(request, post_pk):
     post = get_object_or_404(Post, pk=post_pk, status='published')
