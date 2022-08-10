@@ -1,0 +1,5 @@
+make: Entering directory 'c:/Users/LENOVO/Desktop/All Projects/Django/blog'
+pipenv install -r requirements.txt
+pipenv shell
+make: Leaving directory 'c:/Users/LENOVO/Desktop/All Projects/Django/blog'
+ 

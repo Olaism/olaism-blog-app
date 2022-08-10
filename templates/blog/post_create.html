@@ -1,0 +1,22 @@
+{% extends "_base.html" %}
+
+{% block title %}
+    Create a new post
+{% endblock title %}
+
+
+{% block content %}
+    <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-10 col-lg-8">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        {% include 'includes/form.html' %}
+                        <button type="submit" class="btn btn-primary mt-3">Create new post</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

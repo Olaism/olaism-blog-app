@@ -6,6 +6,7 @@
     <h1>Homepage</h1>
     {% if user.is_authenticated %}
         Hi, {{ user.email }}
+        <a href="{% url 'post_create' %}" class="btn btn-primary">New Post</a>
         <a href="{% url 'logout' %}">Log out</a>
     {% else %}
         <p>You are not logged in</p>
