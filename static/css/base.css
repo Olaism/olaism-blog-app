@@ -6,7 +6,6 @@ body {
 }
 
 body {
-    background: #eaeaf8;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
@@ -20,6 +19,7 @@ h4 {
 
 main {
     margin: 2em 0;
+    min-height: 75vh;
 }
 
 .container {
@@ -39,7 +39,7 @@ main {
     display: grid;
     grid-template-rows: 150px 1fr 50px;
     background: #fff;
-    box-shadow: 10px 10px 10px rgba(238, 234, 234, 0.5), rgba(227, 227, 227, 0.9);
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0,3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 
 .post-card-header img {
@@ -62,7 +62,7 @@ main {
 }
 
 .post-card-content h4 a {
-    color: #5d5de7;
+    color: #7b7ba0;
     text-decoration: none;
 }
 

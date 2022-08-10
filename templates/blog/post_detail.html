@@ -4,4 +4,8 @@
 
 {% block content %}
     <h1>{{ post.title }}</h1>
+    <h5>By {{ post.author }}</h5>
+    <p>{{ post.publish|date:"d M, Y" }}</p>
+    <hr />
+    <p>{{ post.body }}</p>
 {% endblock content %}

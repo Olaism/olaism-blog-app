@@ -10,7 +10,7 @@ class PostListView(ListView):
     model = Post
     template_name = 'blog/post_list.html'
     context_object_name = 'posts'
-    paginate_by = 2
+    paginate_by = 9
 
     def get_queryset(self):
         return Post.objects.filter(status='published')
