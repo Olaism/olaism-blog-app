@@ -31,6 +31,7 @@ class PostDetailView(DetailView):
     template_name = 'blog/post_detail.html'
     context_object_name = 'post'
 
+@method_decorator(login_required, name="dispatch")
 class MyPostsView(ListView):
     model = Post
     template_name = 'blog/my_posts.html'
@@ -54,7 +55,7 @@ class PostCreateView(CreateView):
 @method_decorator(login_required, name="dispatch")
 class PostUpdateView(UpdateView):
     model = Post
-    fields = ('title', 'body', 'status',)
+    fields = ('title', 'body',)
     # success_url = reverse_lazy()
     template_name = 'blog/post_update.html'
 
