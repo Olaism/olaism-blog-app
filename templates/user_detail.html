@@ -1,0 +1,23 @@
+{% extends '_base.html' %}
+
+{% block title %}
+    {{ user.username }}
+{% endblock title %}
+
+{% block content %}
+    <div class="user">
+        <h3>{{ user.username|title }}</h3>
+        <p>All Published Post: {{ published_posts.count }}</p>
+
+        <div class="user-detail-posts">
+            {% for post in published_posts %}
+                <div class="user-detail-post">
+                    <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+                    <div class="user-detail-dates">
+                        <small>Last Updated: {{ post.updated|date:"d M, Y" }}</small>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

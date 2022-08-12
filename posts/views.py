@@ -91,16 +91,3 @@ def publish_post(request, pk):
     else:
         raise PermissionDenied
     return render(request, 'blog/my_posts.html', {'posts': posts})
-
-def post_share(request, post_pk):
-    post = get_object_or_404(Post, pk=post_pk, status='published')
-
-    if request.method == 'POST':
-        form = EmailPostForm()
-        if form.is_valid():
-            cd = form.cleaned_data
-            # send email
-    else:
-        form = EmailPostForm()
-
-    return render(request, 'blog/post_share.html', {'post': post, 'form': form})
