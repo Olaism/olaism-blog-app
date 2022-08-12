@@ -10,17 +10,31 @@ User = get_user_model()
 class PostListViewTest(TestCase):
 
     def setUp(self):
-        author = User.objects.create_user(
+        author1 = User.objects.create_user(
             username='testuser',
             email='testuser@example.com',
             password='testpassword123456'
         )
 
-        post = Post.objects.create(
-            title = 'Test Post',
-            author = author,
-            body = 'Just a text',
+        author2 = User.objects.create_user(
+            username='testuser02',
+            email='testuser02@example.com',
+            password='testpassword021234'
         )
+
+        post = Post.objects.bulk_create([
+            Post(title="My Post 1", body='Body of my post 1', author=author1, status="published"),
+            Post(title="My Post 2", body='Body of my post 2', author=author1),
+            Post(title="My Post 3", body='Body of my post 3', author=author1),
+            Post(title="My Post 4", body='Body of my post 4', author=author1),
+            Post(title="My Post 5", body='Body of my post 5', author=author1, status="published"),
+            Post(title="My Post 6", body='Body of my post 6', author=author1, status="published"),
+        ])
+
+        author2_post = Post.objects.bulk_create([
+            Post(title="My Post 1", body='Body of my post 1', author=author2),
+            Post(title="My Post 2", body='Body of my post 2', author=author2, status="published"),
+        ])
 
         url = reverse('post_list')
 
@@ -36,8 +50,6 @@ class PostListViewTest(TestCase):
     def test_html_template_used(self):
         self.assertTemplateUsed(self.response, 'blog/post_list.html')
 
-    def test_have_links(self):
-        pass
-
-    def test_does_not_have_links(self):
-        pass
+    def test_only_published_posts_in_list(self):
+        posts = self.response.context.get('posts')
+        self.assertEquals(len(posts), 4)
