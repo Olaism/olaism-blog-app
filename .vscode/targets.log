@@ -7,9 +7,8 @@ make: *** No rule to make target 'all'.  Stop.
 # License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
- 
 
-# Make data base, printed on Fri Aug 12 01:54:37 2022
+# Make data base, printed on Mon Aug 15 04:15:59 2022
 
 # Variables
 
@@ -30,14 +29,13 @@ SYSTEMROOT = C:\Windows
 # environment
 PROCESSOR_LEVEL = 6
 # environment
-PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\W 
-indows\system32\WindowsPowerShell\v1.0\Modules
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
 # default
 MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_16900_AYFQRNDXNHWCSHYU
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_16296_YNHFKHNHHDESSRDQ
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -48,8 +46,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 ^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
 # automatic
 %F = $(notdir $%)
-# en 
-vironment
+# environment
 VSCODE_CODE_CACHE_PATH = C:\Users\LENOVO\AppData\Roaming\Code\CachedData\6d9b74a70ca9c7733b29f0456fd8195364076dda
 # environment
 LANG = C
@@ -69,8 +66,7 @@ ONEDRIVE = C:\Users\LENOVO\OneDrive
 CURDIR := c:/Users/LENOVO/Desktop/All Projects/Django/blog
 # environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = 1
-# auto 
-matic
+# automatic
 *D = $(patsubst %/,%,$(patsubst %\,%,$(dir $*)))
 # environment
 PROGRAMFILES = C:\Program Files (x86)
@@ -87,7 +83,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 16900
+VSCODE_PID = 16296
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -119,7 +115,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Users\LENOVO\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\LENOVO\AppData\Local\Programs\Python\Python310\;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Calibre2\;C:\Program Files\Git\cmd;C:\Windows\system32;C:\Users\LENOVO\Downloads\dart-sass;C:\Program Files\PuTTY\;C:\Program Files\Amazon\AWSCLIV2\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Users\LENOVO\AppData\Roaming\Python\Python310\Scripts;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Users\LENOVO\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\LENOVO\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\LENOVO\AppData\Roaming\npm
+PATH = C:\Users\LENOVO\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\LENOVO\AppData\Local\Programs\Python\Python310\;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Calibre2\;C:\Program Files\Git\cmd;C:\Windows\system32;C:\Users\LENOVO\Downloads\dart-sass;C:\Program Files\PuTTY\;C:\Program Files\Amazon\AWSCLIV2\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Users\LENOVO\AppData\Roaming\Python\Python310\Scripts;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Kubernetes\Minikube;C:\Users\LENOVO\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\LENOVO\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\LENOVO\AppData\Roaming\npm
 # environment
 COMPUTERNAME = DESKTOP-7LUTMGP
 # default
@@ -128,8 +124,7 @@ MAKEFILES :=
 ^F = $(notdir $^)
 # environment
 PROMPT = $P$G
-# env 
-ironment
+# environment
 CHOCOLATEYLASTPATHUPDATE = 133006229623750147
 # environment
 LOGONSERVER = \\DESKTOP-7LUTMGP
@@ -172,8 +167,7 @@ HOMEDRIVE = C:
 # environment
 PROCESSOR_ARCHITECTURE = x86
 # environment
-VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostP 
-rocess
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
 COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
@@ -196,8 +190,7 @@ SESSIONNAME = Console
 VSCODE_CLI = 1
 # environment
 ELECTRON_NO_ATTACH_CONSOLE = 1
-# def 
-ault
+# default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell nocomment grouped-target extra-prereqs archives jobserver output-sync load
 # environment
 PROCESSOR_REVISION = 4e03
@@ -212,8 +205,7 @@ PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 78 Stepping 3, GenuineIntel
 
 # Directories
 
-# . (key c:/Users/LENOVO/Desktop/ 
-All Projects/Django/blog, mtime 1660164350): 21 files, no impossibilities.
+# . (key c:/Users/LENOVO/Desktop/All Projects/Django/blog, mtime 1660323271): 21 files, no impossibilities.
 
 # 21 files, no impossibilities in 1 directories.
 
@@ -235,8 +227,7 @@ lint:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  reci 
-pe to execute (from 'Makefile', line 18):
+#  recipe to execute (from 'Makefile', line 18):
 	docker run --rm -i hadolint/hadolint < Dockerfile
 	pylint --disable=R,C config manage.py
 
@@ -255,8 +246,7 @@ run-circleci-local:
 	circleci local execute
 
 validate-circleci:
-#   
-Implicit rule search has not been done.
+#  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 12):
@@ -314,12 +304,11 @@ format:
 # No general ('VPATH' variable) search path.
 
 # strcache buffers: 1 (0) / strings = 32 / storage = 293 B / avg = 9 B
-# current buf: size =  
-8174 B / used = 293 B / count = 32 / avg = 9 B
+# current buf: size = 8174 B / used = 293 B / count = 32 / avg = 9 B
 
 # strcache performance: lookups = 44 / hit rate = 27%
 # hash-table stats:
 # Load=32/8192=0%, Rehash=0, Collisions=0/44=0%
-# Finished Make data base on Fri Aug 12 01:54:37 2022
+# Finished Make data base on Mon Aug 15 04:15:59 2022
 
  

@@ -17,6 +17,10 @@
                         <small>Last Updated: {{ post.updated|date:"d M, Y" }}</small>
                     </div>
                 </div>
+            {% empty %}
+                <div class="user-detail-post">
+                    <h5>This user has no published posts</h5>
+                </div>
             {% endfor %}
         </div>
     </div>

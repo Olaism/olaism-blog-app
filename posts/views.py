@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
@@ -30,6 +31,24 @@ class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
     context_object_name = 'post'
+
+class PostSearchView(ListView):
+    model = Post
+    context_object_name = 'posts'
+    template_name = 'blog/post_search.html'
+
+    def get_queryset(self):
+        query = self.request.GET.get('q')
+        published_posts = Post.objects.filter(status='published')
+        return published_posts.filter(
+            Q(title__icontains=query) | Q(author__username__icontains=query)
+        )
+
+    def get_context_data(self, *args, **kwargs):
+        q = self.request.GET.get('q')
+        context = super().get_context_data(*args, **kwargs)
+        context["query"] = self.request.GET.get('q')
+        return context
 
 @method_decorator(login_required, name="dispatch")
 class MyPostsView(ListView):

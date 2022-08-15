@@ -1,8 +1,9 @@
 {% extends '_base.html' %}
 
-{% block title %}All Posts{% endblock %}
+{% block title %}Result for "{{ query }}" {% endblock %}
 
 {% block content %}
+    <p class="display-6">Search results: {{ posts.count }}</p>
     <section class="post-cards">
         {% for post in posts %}
             <div class="post-card">
@@ -19,7 +20,7 @@
                 </div>
             </div>
         {% empty %}
-            <p class="alert alert-danger">No posts yet!</p>
+            <p class="alert alert-danger">No posts with title "{{ query }}".</p>
         {% endfor %}
     </section>
     <section id="pagination" class="mt-3">
