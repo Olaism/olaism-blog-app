@@ -22,7 +22,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - ENVIRONMENT=development
       - DEBUG=0
-      - SECRET_KEY=9p$dvt8a835)1++-c0b@z5*d-6+o&w1-*p%j6iyhc_na7n9oc0
+      - SECRET_KEY=[YOUR_SECRET_KEY_HERE]
     depends_on:
       - db
 
