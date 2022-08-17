@@ -11,7 +11,7 @@ services:
       POSTGRES_PASSWORD: postgres
   web:
     build: .
-    command: python /code/manage.py runserver 0.0.0.0:8000
+    command: gunicorn config.wsgi -b 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
@@ -22,6 +22,7 @@ services:
       - POSTGRES_PASSWORD=postgres
       - ENVIRONMENT=development
       - DEBUG=0
+      - SECRET_KEY=9p$dvt8a835)1++-c0b@z5*d-6+o&w1-*p%j6iyhc_na7n9oc0
     depends_on:
       - db
 

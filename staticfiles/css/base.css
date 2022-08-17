@@ -1,0 +1,156 @@
+*, 
+body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+h4 {
+    color: #aaa;
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    margin: 2em 0;
+    min-height: 75vh;
+}
+
+.container {
+    width: 99%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.post-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* grid-auto-rows: 500px; */
+    grid-gap: 10px;
+}
+
+.post-card {
+    border: 1px solid #aaa;
+    display: grid;
+    grid-template-rows: 150px 1fr 50px;
+    background: #fff;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0,3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+}
+
+.post-card-header img {
+    height: 100%;
+    width: 100%;
+}
+
+.post-card-content,
+.post-card-footer {
+    padding: 10px;
+}
+
+.post-card-content {
+    line-height: 1.5;
+}
+
+.post-card-content h4 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+}
+
+.post-card-content h4 a {
+    color: #7b7ba0;
+    text-decoration: none;
+}
+
+.post-card-footer {
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+}
+
+footer {
+    padding: 20px;
+    background: #fff;
+}
+
+/* MY POSTS */
+
+.post-circle {
+    border: 1px solid #ddd;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.9) inset;
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 10px;
+    margin: 10px 0;
+    gap: 10px;
+}
+
+.post-circle-title {
+    flex: 1 70%;
+}
+
+.post-circle-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    flex: 1 30%;
+}
+
+.user-detail-posts {
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.user-detail-post {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    flex: 1 50px;
+    border-bottom: 1px solid #ccc;
+    padding: 0 2px;
+}
+
+.user-detail-post h5,
+.user-detail-post h5 a {
+    color: #aaa;
+    flex: 1 70%;
+}
+
+.user-detail-post h5 a:hover {
+    cursor: pointer;
+}
+
+.user-detail-dates {
+    color: #ccc;
+    flex: 1 30%;
+}
+
+@media screen and (min-width: 500px) {
+    .post-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .post-circle {
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        border-radius: 18px;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .post-cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
