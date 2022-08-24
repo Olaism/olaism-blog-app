@@ -3,28 +3,19 @@ version: "3.9"
 services:
   db:
     image: postgres:11
+    restart: always
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
-    environment:
-      POSTGRES_DB: postgres
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
+      - ./postgres_data:/var/lib/postgresql/data/
+    env_file: .env-db
+    ports:
+      - 5432:5432
   web:
     build: .
     command: gunicorn config.wsgi -b 0.0.0.0:8000
     volumes:
-      - .:/code
-    ports:
-      - 8000:8000
-    environment:
-      - POSTGRES_NAME=postgres
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - ENVIRONMENT=development
-      - DEBUG=0
-      - SECRET_KEY=[YOUR_SECRET_KEY_HERE]
+      - .:/code/
+    expose:
+      - 8000
+    env_file: .env
     depends_on:
       - db
-
-volumes:
-  postgres_data:
