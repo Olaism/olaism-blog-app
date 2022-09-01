@@ -17,10 +17,14 @@
   <main class="container">
     <div class="p-4 p-md-5 mb-4 text-white rounded bg-dark">
       <div class="col-md-6 px-0">
+        {% if featured %}
         <strong class="d-inline-block mb-2 text-dark bg-secondary px-2 py-1">{{ featured.tags.all|join:", " }}</strong>
         <h1 class="display-4 fst-italic">{{ featured.title }}</h1>
         <p class="lead my-3">{{ featured.highlight }}</p>
         <p class="lead mb-0"><a href="{% url 'post_detail' featured.pk %}" class="text-white fw-bold">Continue reading...</a></p>
+        {% else %}
+          <p class="alert alert-info">No featured post yet!</p>
+        {% endif %}
       </div>
     </div>
   

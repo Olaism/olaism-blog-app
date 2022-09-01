@@ -38,6 +38,7 @@ whitenoise = "==6.2.0"
 gunicorn = "==19.9.0"
 dj-database-url = "==0.5.0"
 django-taggit = "*"
+markdown = "*"
 
 [dev-packages]
 

@@ -6,7 +6,7 @@
                 <strong class="d-inline-block mb-2 text-primary">{{ post.tags.all|join:", " }}</strong>
                 <h3 class="mb-0">{{ post.title|title }}</h3>
                 <div class="mb-1 text-muted">{{ post.publish|date:"d M, Y" }} by {{ post.author.username|title }}</div>
-                <p class="card-text mb-auto">{{ post.body|truncatechars:200 }}</p>
+                <p class="card-text mb-auto">{{ post.get_body_as_markdown|truncatechars:200 }}</p>
                 <a href="{% url 'post_detail' pk=post.pk %}" class="stretched-link">Continue reading</a>
                 </div>
             </div>

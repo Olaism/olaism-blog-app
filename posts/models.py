@@ -1,8 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.utils.html import mark_safe
 from django.contrib.auth import get_user_model
 
+from markdown import markdown
 from taggit.managers import TaggableManager
 
 class PublishedManager(models.Manager):
@@ -47,3 +49,5 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post_detail', kwargs={'pk': self.pk})
+    def get_body_as_markdown(self):
+        return mark_safe(markdown(self.body, safe_mode='escape'))

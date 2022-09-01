@@ -1,12 +1,25 @@
 {% extends '_base.html' %}
 
+{% load humanize %}
+
+{% load gravatar %}
+
 {% block title %}
     {{ user.username }}
 {% endblock title %}
 
 {% block content %}
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <img src="{{ user|gravatar }}" width="100px" height="100px" alt="{{ user.username }}" 
+            style="border-radius: 50%; border: 1px solid;" class="mx-auto d-block" >
+        </div>
+        <div class="col-md-6 text-center">
+            <h5>{{ user.username|title }}</h5>
+            <p>{{ user.email }}</p>
+        </div>
+    </div>
     <div class="user">
-        <h3>{{ user.username|title }}</h3>
         <p>All Published Post: {{ published_posts.count }}</p>
 
         <div class="user-detail-posts">
@@ -14,7 +27,7 @@
                 <div class="user-detail-post">
                     <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
                     <div class="user-detail-dates">
-                        <small>Last Updated: {{ post.updated|date:"d M, Y" }}</small>
+                        <small>Last Updated: {{ post.updated|naturaltime }}</small>
                     </div>
                 </div>
             {% empty %}

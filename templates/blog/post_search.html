@@ -1,5 +1,7 @@
 {% extends '_base.html' %}
 
+{% load humanize %}
+
 {% block title %}Result for "{{ query }}" {% endblock %}
 
 {% block content %}
@@ -16,7 +18,7 @@
                 </div>
                 <div class="post-card-footer">
                     <p><a href="{% url 'user_detail' post.author.pk %}">{{ post.author.username|title }}</a></p>
-                    <p class="post-date">{{ post.publish|date:"F d, Y" }}</p>
+                    <p class="post-date">{{ post.publish|naturaltime }}</p>
                 </div>
             </div>
         {% empty %}

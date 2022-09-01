@@ -1,5 +1,9 @@
 {% extends "_base.html" %}
 
+{% block css %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.css">
+{% endblock css %}
+
 {% block title %}
     Update post
 {% endblock title %}
@@ -20,3 +24,10 @@
         </div>
     </div>
 {% endblock content %}
+
+{% block js %}
+    <script src="https://cdn.jsdelivr.net/simplemde/latest/simplemde.min.js"></script>
+    <script>
+        var simplemde = new SimpleMDE();
+    </script>
+{% endblock js %}
