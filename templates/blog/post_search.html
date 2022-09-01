@@ -8,7 +8,7 @@
         {% for post in posts %}
             <div class="post-card">
                 <div class="post-card-header">
-                    <img src="../../static/assets/balloons.jpg" alt="" />
+                    <img src="https://source.unsplash.com/random/400*200" alt="" />
                 </div>
                 <div class="post-card-content">
                     <h4><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title|title }}</a></h4>
@@ -16,7 +16,7 @@
                 </div>
                 <div class="post-card-footer">
                     <p><a href="{% url 'user_detail' post.author.pk %}">{{ post.author.username|title }}</a></p>
-                    <p class="post-date">{{ post.publish|date:"d M, Y" }}</p>
+                    <p class="post-date">{{ post.publish|date:"F d, Y" }}</p>
                 </div>
             </div>
         {% empty %}

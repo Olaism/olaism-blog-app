@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
-import environ
+import os, environ
 
 from pathlib import Path
 
@@ -49,6 +49,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'debug_toolbar',
+    'taggit',
 
     #Local
     'users.apps.UsersConfig',
@@ -94,12 +95,12 @@ WSGI_APPLICATION = 'config.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': env('DB_ENGINE'),
-        'NAME': env('DB_DATABASE_NAME'),
-        'USER': env('DB_USERNAME'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),
-        'PORT': env('DB_PORT'),
+        'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.sqlite3'),
+        'NAME': os.environ.get('DB_DATABASE_NAME', BASE_DIR / 'db.sqlite3'),
+        'USER': os.environ.get('DB_USERNAME', 'user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'password'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', '5432'),
     }
 }
 
@@ -161,6 +162,9 @@ LOGOUT_REDIRECT_URL = 'login'
 # CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
 CRISPY_TEMPLATE_PACK = "bootstrap4"
+
+# TAGGIT
+TAGGIT_CASE_INSENSITIVE = True
 
 # EMAIL
 

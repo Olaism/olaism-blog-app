@@ -6,11 +6,16 @@
 
 
 {% block content %}
-    <h2>All my posts</h2>
+    <h2>All my posts ({{ posts.count }})</h2>
     {% for post in posts %}
         <div class="post-circle">
             <div class="post-circle-title">
-                <h4>{{ post.title }}</h4>
+                <h4> <a href="{{ post.get_absolute_url }}" style="color: inherit">{{ post.title }}</a></h4>
+                <p>
+                    {% if post.highlight %}
+                        {{ post.highlight }}
+                    {% endif %}
+                </p>
             </div>
             <div class="post-circle-buttons">
                 <a href="{% url 'publish_post' post.pk %}" class="btn btn-secondary">

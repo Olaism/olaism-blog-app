@@ -3,9 +3,25 @@
 {% block title %}Post: {{ post.title }}{% endblock %}
 
 {% block content %}
-    <h1>{{ post.title }}</h1>
-    <h5>By {{ post.author }}</h5>
-    <p>{{ post.publish|date:"d M, Y" }}</p>
-    <hr />
-    <p>{{ post.body }}</p>
+      <article class="blog-post">
+        <h2 class="blog-post-title">{{ post.title }}</h2>
+        <p class="blog-post-meta">{{ post.publish|date:"F d, Y" }} by <a href="{% url 'user_detail' post.author.pk %}">{{ post.author|title }}</a></p>
+        {% if post.highlight %}
+          <p>This blog post shows a few different types of content that’s supported and styled with Bootstrap. Basic typography, lists, tables, images, code, and more are all supported as expected.</p>
+        {% endif %}
+        <hr>
+        <p>{{ post.body }}</p>
+      </article>
+      <article class="mt-4 shadow-lg p-3 mb-5 bg-light rounded">
+        <h6>Similar posts</h6>
+        <div class="list-group">
+          {% for post in similar_posts %}
+            <a href="{{ post.get_absolute_url }}" class="list-group-item list-group-item-action" aria-current="true">
+              {{ post.title }}
+            </a>
+          {% empty %}
+            <p class="alert alert-info">There are no related posts yet.</p>
+          {% endfor %}
+        </div>
+      </article>
 {% endblock content %}

@@ -19,5 +19,6 @@ urlpatterns = [
     path('<int:pk>/publish/', publish_post, name='publish_post'),
     path('<int:pk>/', PostDetailView.as_view(), name='post_detail'),
     path('<int:pk>/edit/', PostUpdateView.as_view(), name="post_update"),
-    path('<int:pk>/delete/', PostDeleteView.as_view(), name="post_delete")
+    path('<int:pk>/delete/', PostDeleteView.as_view(), name="post_delete"),
+    path('<tag_slug>/', PostListView.as_view(), name="post_list_by_tag"),
 ]

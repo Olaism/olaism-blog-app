@@ -1,4 +1,4 @@
-from django.db.models import Q
+from django.db.models import Q, Count
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.core.exceptions import PermissionDenied
@@ -14,23 +14,55 @@ from django.views.generic.edit import (
     UpdateView,
     DeleteView,
 )
+from taggit.models import Tag
 
 from .models import Post
 from .forms import EmailPostForm
 
 class PostListView(ListView):
     model = Post
-    template_name = 'blog/post_list.html'
+    template_name = 'blog/posts.html'
     context_object_name = 'posts'
-    paginate_by = 9
+    paginate_by = 10
 
     def get_queryset(self):
-        return Post.objects.filter(status='published')
+        tag_slug = self.request.GET.get('tag')
+        posts = Post.objects.filter(status='published')
+        if tag_slug:
+            tag = get_object_or_404(Tag, slug=tag_slug)
+            posts = posts.filter(tags__in=[tag])
+        return posts
+
+    def get_context_data(self, *args, **kwargs):
+        tag = self.request.GET.get('tag')
+        context = super().get_context_data(*args, **kwargs)
+        if tag:
+            context['tag'] = tag
+        return context
 
 class PostDetailView(DetailView):
     model = Post
     template_name = 'blog/post_detail.html'
     context_object_name = 'post'
+
+    def get_context_data(self, *args, **kwargs):
+        post = self.get_object()
+        context = super().get_context_data(*args, **kwargs)
+        post_tags_ids = post.tags.values_list('id', flat=True)
+        similar_posts = Post.objects.filter(status='published').filter(tags__in=post_tags_ids).exclude(id=post.id)
+        context['similar_posts'] = similar_posts.annotate(same_tags=Count('tags')).order_by('-same_tags', '-publish')[:4]
+        return context
+
+    def dispatch(self, request, *args, **kwargs):
+        obj = self.get_object()
+        if not self.request.user.is_anonymous:
+            if obj.status != 'published' and obj.author != self.request.user:
+                raise PermissionDenied
+        else:
+            if obj.status == 'draft':
+                raise PermissionDenied
+        return super().dispatch(request, *args, **kwargs)
+        
 
 class PostSearchView(ListView):
     model = Post
@@ -63,7 +95,7 @@ class MyPostsView(ListView):
 @method_decorator(login_required, name="dispatch")
 class PostCreateView(CreateView):
     model = Post
-    fields = ('title', 'body', 'status',)
+    fields = ('title', 'highlight', 'body', 'status', 'tags',)
     # success_url = reverse_lazy()
     template_name = 'blog/post_create.html'
 
@@ -74,7 +106,7 @@ class PostCreateView(CreateView):
 @method_decorator(login_required, name="dispatch")
 class PostUpdateView(UpdateView):
     model = Post
-    fields = ('title', 'body',)
+    fields = ('title', 'highlight', 'body', 'tags',)
     # success_url = reverse_lazy()
     template_name = 'blog/post_update.html'
 

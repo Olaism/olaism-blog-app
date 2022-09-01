@@ -3,6 +3,8 @@ from django.urls import reverse
 from django.utils import timezone
 from django.contrib.auth import get_user_model
 
+from taggit.managers import TaggableManager
+
 class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset().filter(status='published')
@@ -13,7 +15,8 @@ class Post(models.Model):
         ('published', 'Published'),
     )
 
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=125)
+    highlight = models.CharField(max_length=255, default="", blank=True)
     author = models.ForeignKey(
         get_user_model(), 
         on_delete = models.CASCADE,
@@ -28,6 +31,8 @@ class Post(models.Model):
         choices=STATUS_CHOICES,
         default='draft'
     )
+    featured = models.BooleanField(default=False)
+    tags = TaggableManager()
     slug = models.SlugField(
         max_length=255, 
         blank=True, 

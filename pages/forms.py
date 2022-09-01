@@ -1,3 +1,5 @@
+import os
+
 from django import forms
 from django.conf import settings
 from django.core.mail import send_mail
@@ -11,20 +13,21 @@ class ContactForm(forms.Form):
     def get_info(self):
         cl_data = super().clean()
         name = cl_data.get('name').strip()
-        from_email = cl_data.get('email')
+        from_email = cl_data.get('your_email')
         subject = cl_data.get('inquiry')
+        message = cl_data.get('message')
 
         msg = f"Hi, Olaism.\nMy name is {name} and my email is {from_email}."
-        msg += f"\n{subject}\n\n"
-        msg += f"\n{cl_data.get('message')}"
+        msg += f"\n\nSubject: {subject}\n\n"
+        msg += f"\n{message}\n"
         msg += f"\nThanks."
 
         return subject, msg, from_email
 
     def send(self):
-
+        subject, msg, from_email = self.get_info()
         send_mail(
             subject, 
             msg,
-            settings.EMAIL_HOST_USER,
-            [settings.EMAIL_HOST_USER])
+            os.environ.get('EMAIL_HOST_USER'),
+            [os.environ.get('EMAIL_HOST_USER')])
