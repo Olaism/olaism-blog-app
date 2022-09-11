@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Mon Sep 05 18:58:28 2022
+# Make data base, printed on Sat Sep 10 23:36:15 2022
 
 # Variables
 
@@ -33,13 +33,13 @@ SYSTEMROOT = C:\Windows
 # environment
 PROCESSOR_LEVEL = 6
 # environment
-PSMODULEPATH = %ProgramFiles%\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
 # default
 MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_14924_EUZDDLHBNDBUNOLH
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_11672_TEUFXOUXFQEKCCTW
 # environment
 FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
@@ -89,7 +89,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 14924
+VSCODE_PID = 11672
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -183,8 +183,7 @@ TEMP = C:\Users\LENOVO\AppData\Local\Temp
 # environment
 VSCODE_IPC_HOOK = \\.\pipe\0ae98414ad0d9c7d28fffada35881052-1.71.0-main-sock
 # default
-.RE 
-CIPEPREFIX := 
+.RECIPEPREFIX := 
 # automatic
 <F = $(notdir $<)
 # default
@@ -316,6 +315,6 @@ format:
 # strcache performance: lookups = 47 / hit rate = 25%
 # hash-table stats:
 # Load=35/8192=0%, Rehash=0, Collisions=0/47=0%
-# Finished Make data base on Mon Sep 05 18:58:28 2022
+# Finished Make data base on Sat Sep 10 23:36:15 2022
 
  

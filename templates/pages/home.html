@@ -6,9 +6,9 @@
 <div class="container">
   
     <div class="nav-scroller py-1 mb-2">
-      <nav class="nav d-flex justify-content-center">
+      <nav class="nav d-flex justify-content-start">
         {% for tag in tags %}
-          <a class="px-4 py-1 mx-4 link-dark bg-secondary" href="/posts/?tag={{ tag.name|lower }}">{{ tag.name }}</a>
+          <a class="px-4 py-1 mx-4 link-dark bg-secondary m-1" href="/posts/?tag={{ tag.name|lower }}">{{ tag.name }}</a>
         {% endfor %}
       </nav>
     </div>

@@ -48,7 +48,9 @@ class PostListViewTest(TestCase):
         self.assertEqual(view.func.view_class, PostListView)
 
     def test_html_template_used(self):
-        self.assertTemplateUsed(self.response, 'blog/post_list.html')
+        self.assertTemplateUsed(self.response, '_base.html')
+        self.assertTemplateUsed(self.response, 'blog/posts.html')
+        self.assertTemplateUsed(self.response, 'includes/pagination.html')
 
     def test_only_published_posts_in_list(self):
         posts = self.response.context.get('posts')
