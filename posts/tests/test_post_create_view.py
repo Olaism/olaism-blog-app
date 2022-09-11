@@ -51,7 +51,7 @@ class PostCreateViewTests(PostCreateTestCase):
         self.assertIsInstance(form, ModelForm)
 
     def test_form_inputs(self):
-        self.assertContains(self.response, "<input", 3)
+        self.assertContains(self.response, "<input", 5)
         self.assertContains(self.response, "<textarea", 1)
         self.assertContains(self.response, 'Create new post</button>', 1)
 
@@ -62,12 +62,14 @@ class SuccessfulPostCreateViewTests(PostCreateTestCase):
         self.client.login(username="testuser", password="testpassword123456")
         self.response = self.client.post(self.url, {
             'title': 'My Post',
-            'body': "This is the body",
-            'status': "draft"
+            'body': 'This is the body',
+            'status': 'draft',
+            'tags': 'test, testing'
         })
 
     def test_redirection(self):
-        post_url = reverse('post_detail', kwargs={'pk': 1})
+        post = Post.objects.first()
+        post_url = reverse('post_detail', kwargs={'pk': post.pk})
         self.assertRedirects(self.response, post_url)
 
     def test_post_creation(self):

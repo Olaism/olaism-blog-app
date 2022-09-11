@@ -45,6 +45,9 @@ class AnonymousDraftPostDetailView(PostDetailViewTestCase):
     def test_status_code(self):
         self.assertEqual(self.response.status_code, 403)
 
+    def test_template_used(self):
+        self.assertTemplateUsed(self.response, '403.html')
+
 class UnauthorizedUserDraftDetailView(PostDetailViewTestCase):
 
     def setUp(self):
@@ -55,6 +58,9 @@ class UnauthorizedUserDraftDetailView(PostDetailViewTestCase):
 
     def test_status_code(self):
         self.assertEquals(self.response.status_code, 403)
+
+    def test_template_used(self):
+        self.assertTemplateUsed(self.response, '403.html')
 
 class DraftPostDetailView(PostDetailViewTestCase):
 

@@ -6,8 +6,9 @@
 
 {% block content %}
       <article class="blog-post">
-        <h2 class="blog-post-title">{{ post.title }}</h2>
-        <p class="blog-post-meta">{{ post.publish|naturaltime }} by <a href="{% url 'user_detail' post.author.pk %}">{{ post.author|title }}</a></p>
+        <h2 class="blog-post-title">{{ post.title|title }}</h2>
+        <p class="blog-post-meta">By <a href="{% url 'user_detail' post.author.pk %}">{{ post.author|title }}</a> | 
+        <small class="text-muted">{{ post.publish|date:"M d, y" }}</small></p>
         {% if post.highlight %}
           {{ post.highlight }}
         {% endif %}
@@ -19,7 +20,7 @@
         <div class="list-group">
           {% for post in similar_posts %}
             <a href="{{ post.get_absolute_url }}" class="list-group-item list-group-item-action" aria-current="true">
-              {{ post.title }}
+              {{ post.title |title }} <small class="text-muted">by {{ post.author }}</small>
             </a>
           {% empty %}
             <p class="alert alert-info">There are no related posts yet.</p>

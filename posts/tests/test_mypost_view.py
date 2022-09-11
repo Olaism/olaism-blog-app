@@ -46,6 +46,13 @@ class MyPostViewTestCase(TestCase):
 
         self.url = reverse('my_posts')
 
+class LoginRequiredMyPostsViewTest(TestCase):
+
+    def test_redirection(self):
+        url = reverse('my_posts')
+        response = self.client.get(url)
+        self.assertRedirects(response, f'{reverse("login")}?next={url}')
+
 class MyPostsViewTest(MyPostViewTestCase):
     
     def setUp(self):

@@ -6,6 +6,8 @@ from django.contrib.auth import get_user_model
 from ..models import Post
 from ..views import PostDeleteView
 
+User = get_user_model()
+
 class PostDeleteTestCase(TestCase):
 
     def setUp(self):
@@ -14,21 +16,44 @@ class PostDeleteTestCase(TestCase):
             email="testuser@gmail.com",
             password="testpassword123456"
         )
+        self.unauthorized_user = User.objects.create_user(
+            username="testuser2",
+            email="testuser2@gmail.com",
+            password="testpassword789089"
+        )
         self.post = Post.objects.create(
             title="My Post",
             body="This is the body of my post",
             author=self.user
         )
-        self.url = reverse('post_delete', kwargs={'pk': 1})
+        self.url = reverse('post_delete', kwargs={'pk': self.post.pk})
 
 class LoginRequiredPostDeleteViewTests(PostDeleteTestCase):
 
-    def test_redirection(self):
-        response = self.client.get(self.url)
-        login_url=reverse("login")
-        self.assertRedirects(response, f"{login_url}?next={self.url}")
+    def setUp(self):
+        super().setUp()
+        self.response = self.client.get(self.url)
 
-class PostDeleteViewTests(PostDeleteTestCase):
+    def test_redirection(self):
+        self.assertRedirects(self.response, f'{reverse("login")}?next={self.url}')
+
+class UnauthorizedPostDeleteViewTests(PostDeleteTestCase):
+
+    def setUp(self):
+        super().setUp()
+        self.client.login(
+            username='testuser2', 
+            password='testpassword789089'
+        )
+        self.response = self.client.get(self.url)
+
+    def test_redirection(self):
+        self.assertEqual(self.response.status_code, 403)
+
+    def test_template_used(self):
+        self.assertTemplateUsed(self.response, '403.html')
+
+class AuthorizedPostDeleteViewTests(PostDeleteTestCase):
 
     def setUp(self):
         super().setUp()

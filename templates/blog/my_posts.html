@@ -18,7 +18,7 @@
                 </p>
             </div>
             <div class="post-circle-buttons">
-                <a href="{% url 'publish_post' post.pk %}" class="btn btn-secondary">
+                <a href="{% url 'status_change' post.pk %}" class="btn btn-secondary">
                     {% if post.status == 'draft' %}
                         Publish
                     {% else %}

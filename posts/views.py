@@ -107,7 +107,7 @@ class PostCreateView(CreateView):
 class PostUpdateView(UpdateView):
     model = Post
     fields = ('title', 'highlight', 'body', 'tags',)
-    # success_url = reverse_lazy()
+    success_url = reverse_lazy('my_posts')
     template_name = 'blog/post_update.html'
 
     def dispatch(self, request, *args, **kwargs):
@@ -129,7 +129,7 @@ class PostDeleteView(DeleteView):
         return super().dispatch(request, *args, **kwargs)
 
 @login_required
-def publish_post(request, pk):
+def status_change(request, pk):
     posts = Post.objects.filter(author=request.user)
     post = get_object_or_404(Post, pk=pk)
     if post.author == request.user:
