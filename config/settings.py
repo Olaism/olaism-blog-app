@@ -39,16 +39,16 @@ ALLOWED_HOSTS = ['olaism-blog-app.herokuapp.com', 'localhost', '127.0.0.1']
 # Application definition
 
 INSTALLED_APPS = [
+    'whitenoise.runserver_nostatic',
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     'django.contrib.humanize',
 
-    'whitenoise.runserver_nostatic',
     'crispy_forms',
     'debug_toolbar',
     'taggit',
