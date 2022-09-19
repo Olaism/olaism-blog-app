@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Sep 13 03:48:43 2022
+# Make data base, printed on Sun Sep 18 23:05:23 2022
 
 # Variables
 
@@ -37,7 +37,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_1832_LEHFTDIPVKXPLFWP
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_3424_WBNBZJUKVWKUDZXA
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -49,7 +49,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\LENOVO\AppData\Roaming\Code\CachedData\784b0177c56c607789f9638da7b6bf3230d47a8c
+VSCODE_CODE_CACHE_PATH = C:\Users\LENOVO\AppData\Roaming\Code\CachedData\74b1f979648cc44d385a2286793c226e611f59e7
 # environment
 LANG = C
 # default
@@ -85,7 +85,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 1832
+VSCODE_PID = 3424
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -177,7 +177,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\LENOVO\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\0ae98414ad0d9c7d28fffada35881052-1.71.0-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\0ae98414ad0d9c7d28fffada35881052-1.71.2-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -312,6 +312,6 @@ format:
 # strcache performance: lookups = 48 / hit rate = 25%
 # hash-table stats:
 # Load=36/8192=0%, Rehash=0, Collisions=0/48=0%
-# Finished Make data base on Tue Sep 13 03:48:43 2022
+# Finished Make data base on Sun Sep 18 23:05:23 2022
 
  

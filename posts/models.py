@@ -40,6 +40,8 @@ class Post(models.Model):
         blank=True, 
         null= True
     )
+    objects = models.Manager()
+    published = PublishedManager()
 
     class Meta:
         ordering = ('-publish',)

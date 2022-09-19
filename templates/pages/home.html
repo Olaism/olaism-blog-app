@@ -1,9 +1,17 @@
 {% extends '_base.html' %}
 
+{% load post_tags %}
+
 {% block title %}Home{% endblock %}
 
 {% block content %}
 <div class="container">
+
+  <div class="row">
+    <div class="card">
+      There has been {% total_posts %} posts so far.
+    </div>
+  </div>
   
     <div class="nav-scroller py-1 mb-2">
       <nav class="nav d-flex justify-content-start">
@@ -29,6 +37,9 @@
     </div>
   
     {% include 'includes/post_list.html' %}
+
+    <h4>Latest Posts</h4>
+    {% show_latest_posts 3 %}
   
   </main>
 {% endblock content %}
