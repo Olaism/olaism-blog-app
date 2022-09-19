@@ -1,7 +1,10 @@
 from django.db import models
 from django.urls import reverse
 from django.utils import timezone
+from django.dispatch import receiver
+from django.utils.text import slugify
 from django.utils.html import mark_safe
+from django.db.models.signals import pre_save
 from django.contrib.auth import get_user_model
 
 from markdown import markdown
@@ -18,7 +21,7 @@ class Post(models.Model):
         ('published', 'Published'),
     )
 
-    title = models.CharField(max_length=125)
+    title = models.CharField(max_length=30, unique=True)
     highlight = models.CharField(max_length=255, default="", blank=True)
     author = models.ForeignKey(
         get_user_model(), 
@@ -38,7 +41,8 @@ class Post(models.Model):
     featured = models.BooleanField(default=False)
     tags = TaggableManager()
     slug = models.SlugField(
-        max_length=255, 
+        unique=True,
+        max_length=30, 
         blank=True, 
         null= True
     )
@@ -52,7 +56,12 @@ class Post(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post_detail', kwargs={'pk': self.pk})
+        return reverse('post_detail', kwargs={'slug': self.slug})
         
     def get_body_as_markdown(self):
         return mark_safe(markdown(self.body, safe_mode='escape'))
+
+@receiver(pre_save, sender=Post)
+def add_slug_to_model(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slugify(instance.title)

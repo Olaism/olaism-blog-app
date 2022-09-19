@@ -127,7 +127,7 @@ class PostUpdateView(UpdateView):
 class PostDeleteView(DeleteView):
     model = Post
     template_name = 'blog/post_delete.html'
-    success_url = reverse_lazy('post_list')
+    success_url = reverse_lazy('my_posts')
 
     def dispatch(self, request, *args, **kwargs):
         obj = self.get_object()
@@ -136,9 +136,9 @@ class PostDeleteView(DeleteView):
         return super().dispatch(request, *args, **kwargs)
 
 @login_required
-def status_change(request, pk):
+def status_change(request, slug):
     posts = Post.objects.filter(author=request.user)
-    post = get_object_or_404(Post, pk=pk)
+    post = get_object_or_404(Post, slug=slug)
     if post.author == request.user:
         if post.status == 'draft':
             post.status = 'published'

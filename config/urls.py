@@ -18,11 +18,14 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import include, path
 
+from users.views import UserDetailView
+
 urlpatterns = [
     path('admin-panel-dashboard/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('users.urls')),
     path('posts/', include('posts.urls')),
+    path('<slug:slug>/', UserDetailView.as_view(), name='user_detail'),
     path('', include('pages.urls')),
 ]
 

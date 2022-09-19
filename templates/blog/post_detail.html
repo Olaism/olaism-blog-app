@@ -7,7 +7,7 @@
 {% block content %}
       <article class="blog-post">
         <h2 class="blog-post-title">{{ post.title|title }}</h2>
-        <p class="blog-post-meta">By <a href="{% url 'user_detail' post.author.pk %}">{{ post.author|title }}</a> | 
+        <p class="blog-post-meta">By <a href="{{ post.author.get_absolute_url }}">{{ post.author|title }}</a> | 
         <small class="text-muted">{{ post.publish|date:"M d, y" }}</small></p>
         {% if post.highlight %}
           {{ post.highlight }}

@@ -18,15 +18,15 @@
                 </p>
             </div>
             <div class="post-circle-buttons">
-                <a href="{% url 'status_change' post.pk %}" class="btn btn-secondary">
+                <a href="{% url 'status_change' post.slug %}" class="btn btn-secondary">
                     {% if post.status == 'draft' %}
                         Publish
                     {% else %}
                         Unpublish
                     {% endif %}
                 </a>
-                <a href="{% url 'post_update' post.pk %}" class="btn btn-primary">Edit</a>
-                <a href="{% url 'post_delete' post.pk %}" class="btn btn-danger">Delete</a>
+                <a href="{% url 'post_update' post.slug %}" class="btn btn-primary">Edit</a>
+                <a href="{% url 'post_delete' post.slug %}" class="btn btn-danger">Delete</a>
             </div>
         </div>
     {% empty %}
