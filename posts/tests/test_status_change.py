@@ -11,7 +11,7 @@ class LoginRequiredStatusChangeViewTest(TestCase):
 
     def test_redirection(self):
         login_url = reverse('login')
-        url = reverse('status_change', kwargs={'pk': 1})
+        url = reverse('status_change', kwargs={'slug': 'test-post'})
         response = self.client.get(url)
         self.assertRedirects(response, f"{login_url}?next={url}")
 
@@ -34,7 +34,7 @@ class StatusChangeViewTestCase(TestCase):
             body = 'Just a text',
             tags = 'test, testing'
         )
-        self.url = reverse('status_change', kwargs={'pk': self.post.pk})
+        self.url = reverse('status_change', kwargs={'slug': self.post.slug})
 
 class UnauthorizedStatusChangeViewTest(StatusChangeViewTestCase):
 
@@ -63,7 +63,7 @@ class AuthorizedStatusChangeViewTest(StatusChangeViewTestCase):
         self.assertEquals(self.response.status_code, 200)
 
     def test_resolve_url_to_correct_view(self):
-        view = resolve('/posts/1/status-change/')
+        view = resolve('/posts/test-post/status-change/')
         self.assertEquals(view.func, status_change)
 
     def test_publish_post(self):

@@ -26,7 +26,7 @@ class PostDeleteTestCase(TestCase):
             body="This is the body of my post",
             author=self.user
         )
-        self.url = reverse('post_delete', kwargs={'pk': self.post.pk})
+        self.url = reverse('post_delete', kwargs={'slug': self.post.slug})
 
 class LoginRequiredPostDeleteViewTests(PostDeleteTestCase):
 
@@ -67,7 +67,7 @@ class AuthorizedPostDeleteViewTests(PostDeleteTestCase):
         self.assertEquals(self.response.status_code, 200)
 
     def test_view_resolve_correct_url(self):
-        view = resolve('/posts/1/delete/')
+        view = resolve('/posts/my-post/delete/')
         self.assertEquals(view.func.view_class, PostDeleteView)
 
     def test_view_uses_correct_template(self):
@@ -92,8 +92,8 @@ class SuccessfulPostDeleteViewTests(PostDeleteTestCase):
         self.response = self.client.post(self.url)
 
     def test_redirection(self):
-        post_list_url = reverse('post_list')
-        self.assertRedirects(self.response, post_list_url)
+        my_posts_url = reverse('my_posts')
+        self.assertRedirects(self.response, my_posts_url)
 
     def test_post_deletion(self):
         self.assertFalse(Post.objects.exists())

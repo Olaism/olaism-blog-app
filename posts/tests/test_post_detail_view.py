@@ -62,7 +62,7 @@ class UnauthorizedUserDraftDetailView(PostDetailViewTestCase):
     def test_template_used(self):
         self.assertTemplateUsed(self.response, '403.html')
 
-class DraftPostDetailView(PostDetailViewTestCase):
+class AuthorizedDraftPostDetailView(PostDetailViewTestCase):
 
     def setUp(self):
         super().setUp()
@@ -74,7 +74,7 @@ class DraftPostDetailView(PostDetailViewTestCase):
         self.assertEquals(self.response.status_code, 200)
 
     def test_url_resolve_correct_to_view(self):
-        view = resolve(self.url)
+        view = resolve('/posts/test-post/')
         self.assertEqual(view.func.view_class, PostDetailView)
 
     def test_html_template_used(self):

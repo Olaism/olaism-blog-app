@@ -40,8 +40,8 @@ class MyPostViewTestCase(TestCase):
         ])
 
         author2_post = Post.objects.bulk_create([
-            Post(title="My Post 1", body='Body of my post 1', author=author2),
-            Post(title="My Post 2", body='Body of my post 2', author=author2, status="published"),
+            Post(title="My Post 7", body='Body of my post 1', author=author2),
+            Post(title="My Post 8", body='Body of my post 2', author=author2, status="published"),
         ])
 
         self.url = reverse('my_posts')

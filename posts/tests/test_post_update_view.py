@@ -27,7 +27,7 @@ class PostUpdateTestCase(TestCase):
             author=self.user,
             tags='test, testing',
         )
-        self.url = reverse('post_update', kwargs={'pk': self.post.pk})
+        self.url = reverse('post_update', kwargs={'slug': self.post.slug})
 
 class LoginRequiredPostUpdateViewTests(PostUpdateTestCase):
 

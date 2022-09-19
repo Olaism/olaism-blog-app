@@ -69,7 +69,7 @@ class SuccessfulPostCreateViewTests(PostCreateTestCase):
 
     def test_redirection(self):
         post = Post.objects.first()
-        post_url = reverse('post_detail', kwargs={'pk': post.pk})
+        post_url = reverse('post_detail', kwargs={'slug': post.slug})
         self.assertRedirects(self.response, post_url)
 
     def test_post_creation(self):
