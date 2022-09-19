@@ -7,7 +7,8 @@
 {% block content %}
     <div class="row justify-content-center">
         <div class="col-lg-6 col-md-8 col-sm-10">
-            <img src="{{ user|gravatar }}" alt="{{ user.username }}" width="100px" height="100px" style="border-radius: 50%; border: 1px solid;">
+            <img src="{{ user|gravatar }}" alt="{{ user.username }}" width="200" height="200" class="rounded-circle" />
+            <small class="text-muted">Set or change your profile image on <a href="https://gravatar.com">Gravatar</a></small>
             <form method="post">
                 {% csrf_token %}
                 {% include 'includes/form.html' %}

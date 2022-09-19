@@ -1,8 +1,10 @@
-<ul>
-    {% for post in latest_posts %}
-        <li>
-            <a href="{{ post.get_absolute_url }}">{{ post.title }}</a>
-            <small>{{ post.author.username }}</small>
-        </li>
-    {% endfor %}
-</ul>
+<div class="p-4">
+    <h4 class="fst-italic">Latest Posts</h4>
+    <ol class="list-unstyled mb-0 py-3">
+        {% for post in latest_posts %}
+            <li><a href="#">{{ post.title|title }}</a> By <small class="text-muted">{{ post.author }}</small></li>
+        {% empty %}
+            <div class="alert alert-info" role="alert">No posts yet ):</div>
+        {% endfor %}
+    </ol>
+</div>

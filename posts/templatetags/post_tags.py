@@ -14,7 +14,7 @@ def total_posts():
     
 @register.inclusion_tag('includes/latest_posts.html')
 def show_latest_posts(count=5):
-    latest_posts = Post.published.order_by('-publish')[:count]
+    latest_posts = Post.published.order_by('-publish').exclude(author__is_staff=True)[:count]
     return {'latest_posts': latest_posts}
 
 # @register.assignment_tag

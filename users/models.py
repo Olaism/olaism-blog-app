@@ -1,5 +1,8 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import AbstractUser
 
 class CustomUser(AbstractUser):
-    pass
+    
+    def get_absolute_url(self):
+        return reverse('user_detail', kwargs={'pk': self.pk})

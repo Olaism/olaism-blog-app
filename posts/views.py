@@ -27,7 +27,7 @@ class PostListView(ListView):
 
     def get_queryset(self):
         tag_slug = self.request.GET.get('tag')
-        posts = Post.objects.filter(status='published')
+        posts = Post.published.all()
         if tag_slug:
             tag = get_object_or_404(Tag, slug=tag_slug)
             posts = posts.filter(tags__in=[tag])
@@ -38,6 +38,7 @@ class PostListView(ListView):
         context = super().get_context_data(*args, **kwargs)
         if tag:
             context['tag'] = tag
+        context['admin_posts'] = self.get_queryset().filter(author__is_staff=True)
         return context
 
 class PostDetailView(DetailView):
@@ -71,15 +72,21 @@ class PostSearchView(ListView):
 
     def get_queryset(self):
         query = self.request.GET.get('q')
-        published_posts = Post.objects.filter(status='published')
-        return published_posts.filter(
-            Q(title__icontains=query) | Q(author__username__icontains=query)
-        )
+        published_posts = Post.published.all()
+        if query:
+            return published_posts.filter(
+                Q(title__icontains=query) | Q(author__username__icontains=query)
+            )
+        else:
+            return []
 
     def get_context_data(self, *args, **kwargs):
         q = self.request.GET.get('q')
         context = super().get_context_data(*args, **kwargs)
-        context["query"] = self.request.GET.get('q')
+        if not q:
+            context["query"] = ''
+        else:
+            context["query"] = self.request.GET.get('q')
         return context
 
 @method_decorator(login_required, name="dispatch")

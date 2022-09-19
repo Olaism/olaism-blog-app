@@ -1,4 +1,4 @@
-{% load static %}
+{% load static gravatar %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,58 +19,49 @@
 </head>
 <body>
     {% block body %}
-    <header>
-        <nav class="navbar navbar-expand-lg bg-light">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="{% url 'home' %}">Blogify</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                {% if user.is_authenticated %}
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'post_create' %}">New Post</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'post_list' %}">All Posts</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'my_posts' %}">My Posts</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="{% url 'contact' %}">Contact Admin</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      {{ user.username }}
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="{% url 'my_profile' %}">Profile</a></li>
-                      <li><a class="dropdown-item" href="{% url 'password_change' %}">Change Password</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="{% url 'logout' %}">Logout</a></li>
-                    </ul>
-                  </li>
-                </ul>
-                <form class="d-flex" role="search" action="{% url 'post_search' %}" method="get">
-                  <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                  <button class="btn btn-outline-success" type="submit">Search</button>
-                </form>
-              </div>
-              {% else %}
-              <form action="form-inline ml-auto">
-                <a href="{% url 'signup' %}" class="btn btn-sm btn-outline-secondary">Sign Up</a>
-                <a href="{% url 'login' %}" class="btn btn-sm btn-primary ml-2">Log In</a>
-              </form>
-              {% endif %}
-            </div>
-          </nav>
-    </header>
-    <main>
-        <div class="container">
-            {% block content %}{% endblock content %}
+    <header class="p-3 mb-3 border-bottom">
+      <div class="container-fluid">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+            Blogify
+          </a>
+  
+          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">Home</a></li>
+            <li><a href="{% url 'contact' %}" class="nav-link px-2 link-dark">Contact</a></li>
+            <li><a href="{% url 'post_create' %}" class="nav-link px-2 link-dark">New</a></li>
+          </ul>
+  
+          <form action="{% url 'post_search' %}" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
+            <input type="search" name="q" class="form-control" placeholder="Search..." aria-label="Search">
+          </form>
+  
+          {% if user.is_authenticated %}
+          <div class="dropdown text-end">
+            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              <img src="{{ user|gravatar }}" alt="mdo" width="32" height="32" class="rounded-circle">
+            </a>
+            <ul class="dropdown-menu text-small">
+              <li><a class="dropdown-item" href="{% url 'my_profile' %}">Profile</a></li>
+              <li><a class="dropdown-item" href="{% url 'my_posts' %}">My Posts</a></li>
+              <li><a class="dropdown-item" href="{% url 'password_change' %}">Password Change</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+            </ul>
+          </div>
+          {% else %}
+          <div class="text-end">
+            <a href="{% url 'login' %}" type="button" class="btn btn-outline-info me-2">Login</a>
+            <a href="{% url 'signup' %}" type="button" class="btn btn-warning">Sign-up</a>
+          </div>
+          {% endif %}
         </div>
+      </div>
+      {% block header_tags %}
+      {% endblock header_tags %}
+    </header>
+    <main class="container">
+      {% block content %}{% endblock content %}
     </main>
     <footer class="bg-secondary">
       <div class="container row justify-content-between">

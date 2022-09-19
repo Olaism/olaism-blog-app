@@ -11,6 +11,7 @@ class PublishedManager(models.Manager):
     def get_queryset(self):
         return super(PublishedManager, self).get_queryset().filter(status='published')
 
+
 class Post(models.Model):
     STATUS_CHOICES = (
         ('draft', 'Draft'),
@@ -24,6 +25,7 @@ class Post(models.Model):
         on_delete = models.CASCADE,
         related_name = 'posts'
     )
+    image_url = models.URLField(null=True, blank=True)
     body = models.TextField()
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
