@@ -20,21 +20,20 @@
         </div>
     </div>
     <div class="user">
-        <p>All Published Post: {{ published_posts.count }}</p>
+        <p>All Published Posts: {{ published_posts.count }}</p>
 
-        <div class="user-detail-posts">
+        <div class="list-group w-auto">
             {% for post in published_posts %}
-                <div class="user-detail-post">
-                    <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
-                    <div class="user-detail-dates">
-                        <small>Last Updated: {{ post.updated|naturaltime }}</small>
-                    </div>
+            <a href="{{ post.absolute_url }}" class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
+              <div class="d-flex gap-2 w-100 justify-content-between">
+                <div>
+                  <h6 class="mb-0">{{ post.title }}</h6>
+                  <p class="mb-0 opacity-75">{{ post.highlight|truncatechars:50 }}</p>
                 </div>
-            {% empty %}
-                <div class="user-detail-post">
-                    <h5>This user has no published posts</h5>
-                </div>
+                <small class="opacity-50 text-nowrap">{{ post.updated|naturaltime }}</small>
+              </div>
+            </a>
             {% endfor %}
-        </div>
+          </div>
     </div>
 {% endblock content %}

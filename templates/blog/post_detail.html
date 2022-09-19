@@ -19,9 +19,22 @@
         <h6>Similar posts</h6>
         <div class="list-group">
           {% for post in similar_posts %}
-            <a href="{{ post.get_absolute_url }}" class="list-group-item list-group-item-action" aria-current="true">
-              {{ post.title |title }} <small class="text-muted">by {{ post.author }}</small>
-            </a>
+            <div class="card p-3">
+              <div class="row justify-content-between">
+                <div class="col-6">
+                  <a href="{{ post.get_absolute_url }}" class="text-muted">
+                    {{ post.title |title }}
+                  </a> by 
+                  <a href="{{ post.author.get_absolute_url }}">
+                    {{ post.author }}
+                  </a>
+                </div>
+                <div class="col-6 text-end text-muted">
+                  {{ post.publish|naturaltime }}
+                </div>
+              </div>
+            </div>
+            
           {% empty %}
             <p class="alert alert-info">There are no related posts yet.</p>
           {% endfor %}

@@ -38,7 +38,7 @@ class PostListView(ListView):
         context = super().get_context_data(*args, **kwargs)
         if tag:
             context['tag'] = tag
-        context['admin_posts'] = self.get_queryset().filter(author__is_staff=True)
+        context['admin_posts'] = Post.published.filter(author__is_staff=True)
         return context
 
 class PostDetailView(DetailView):
@@ -102,7 +102,7 @@ class MyPostsView(ListView):
 @method_decorator(login_required, name="dispatch")
 class PostCreateView(CreateView):
     model = Post
-    fields = ('title', 'highlight', 'body', 'status', 'tags',)
+    fields = ('title', 'highlight', 'body', 'image_url', 'status', 'tags',)
     # success_url = reverse_lazy()
     template_name = 'blog/post_create.html'
 
@@ -113,7 +113,7 @@ class PostCreateView(CreateView):
 @method_decorator(login_required, name="dispatch")
 class PostUpdateView(UpdateView):
     model = Post
-    fields = ('title', 'highlight', 'body', 'tags',)
+    fields = ('title', 'highlight', 'body', 'image_url', 'tags',)
     success_url = reverse_lazy('my_posts')
     template_name = 'blog/post_update.html'
 
