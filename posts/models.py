@@ -21,7 +21,7 @@ class Post(models.Model):
         ('published', 'Published'),
     )
 
-    title = models.CharField(max_length=30, unique=True)
+    title = models.CharField(max_length=100)
     highlight = models.CharField(max_length=255, default="", blank=True)
     author = models.ForeignKey(
         get_user_model(), 
@@ -39,10 +39,9 @@ class Post(models.Model):
         default='draft'
     )
     featured = models.BooleanField(default=False)
+    read_time = models.PositiveIntegerField(default=0)
     tags = TaggableManager()
     slug = models.SlugField(
-        unique=True,
-        max_length=30, 
         blank=True, 
         null= True
     )
@@ -50,7 +49,7 @@ class Post(models.Model):
     published = PublishedManager()
 
     class Meta:
-        ordering = ('-publish',)
+        ordering = ('-updated', '-publish')
 
     def __str__(self):
         return self.title
@@ -61,7 +60,24 @@ class Post(models.Model):
     def get_body_as_markdown(self):
         return mark_safe(markdown(self.body, safe_mode='escape'))
 
+def create_slug(instance, new_slug=None):
+    slug = slugify(instance.title)
+    if new_slug is not None:
+        slug = new_slug
+    qs = Post.objects.filter(slug=slug).order_by('-id')
+    exists = qs.exists()
+    if exists:
+        new_slug = f"{slug}-{qs.first().id}"
+        return create_slug(instance, new_slug=new_slug)
+    return slug
+
 @receiver(pre_save, sender=Post)
-def add_slug_to_model(sender, instance, *args, **kwargs):
+def pre_save_post_signal(sender, instance, *args, **kwargs):
     if not instance.slug:
-        instance.slug = slugify(instance.title)
+        instance.slug = create_slug(instance)
+
+    if instance.featured:
+        qs = Post.objects.filter(featured=True)
+        for post in qs:
+            post.featured = False
+            post.save()

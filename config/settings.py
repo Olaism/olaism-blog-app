@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'crispy_forms',
     'debug_toolbar',
     'taggit',
+    'rest_framework',
+    'corsheaders',
 
     #Local
     'users.apps.UsersConfig',
@@ -63,6 +65,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -168,6 +171,12 @@ CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 # TAGGIT
 TAGGIT_CASE_INSENSITIVE = True
+
+# CORS
+CORS_ORIGIN_WHITELIST = (
+    'http://localhost:8000',
+    'http://localhost:3000'
+)
 
 # EMAIL
 

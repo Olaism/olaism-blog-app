@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sun Sep 18 23:05:23 2022
+# Make data base, printed on Fri Dec 23 11:31:30 2022
 
 # Variables
 
@@ -37,7 +37,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_3424_WBNBZJUKVWKUDZXA
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_10752_IVKOWIICZZMYOPXK
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -49,7 +49,7 @@ VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # automatic
 %F = $(notdir $%)
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\LENOVO\AppData\Roaming\Code\CachedData\74b1f979648cc44d385a2286793c226e611f59e7
+VSCODE_CODE_CACHE_PATH = C:\Users\LENOVO\AppData\Roaming\Code\CachedData\e8a3071ea4344d9d48ef8a4df2c097372b0c5161
 # environment
 LANG = C
 # default
@@ -85,7 +85,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 3424
+VSCODE_PID = 10752
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -117,7 +117,7 @@ MAKELEVEL := 0
 # default
 MAKE = $(MAKE_COMMAND)
 # environment
-PATH = C:\Users\LENOVO\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\LENOVO\AppData\Local\Programs\Python\Python310\;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Calibre2\;C:\Program Files\Git\cmd;C:\Windows\system32;C:\Users\LENOVO\Downloads\dart-sass;C:\Program Files\PuTTY\;C:\Program Files\Amazon\AWSCLIV2\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Users\LENOVO\AppData\Roaming\Python\Python310\Scripts;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Kubernetes\Minikube;C:\Users\LENOVO\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\LENOVO\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\LENOVO\AppData\Roaming\npm
+PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Users\LENOVO\AppData\Local\Programs\Python\Python310\Scripts\;C:\Users\LENOVO\AppData\Local\Programs\Python\Python310\;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\Calibre2\;C:\Program Files\Git\cmd;C:\Windows\system32;C:\Users\LENOVO\Downloads\dart-sass;C:\Program Files\PuTTY\;C:\Program Files\Amazon\AWSCLIV2\;C:\ProgramData\chocolatey\bin;C:\Program Files\nodejs\;C:\Users\LENOVO\AppData\Roaming\Python\Python310\Scripts;;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\Kubernetes\Minikube;C:\Users\LENOVO\AppData\Local\Microsoft\WindowsApps;C:\Program Files\heroku\bin;C:\Users\LENOVO\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\LENOVO\AppData\Roaming\npm;C:\Program Files (x86)\PostgreSQL\10\bin;
 # environment
 COMPUTERNAME = DESKTOP-7LUTMGP
 # default
@@ -177,7 +177,7 @@ ELECTRON_RUN_AS_NODE = 1
 # environment
 TEMP = C:\Users\LENOVO\AppData\Local\Temp
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\0ae98414ad0d9c7d28fffada35881052-1.71.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\0ae98414ad0d9c7d28fffada35881052-1.74.2-main-sock
 # default
 .RECIPEPREFIX := 
 # automatic
@@ -197,18 +197,18 @@ ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 PROCESSOR_REVISION = 4e03
 # environment
-PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 78 Stepping 3, GenuineIntel
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 78 Stepping 3, GenuineInt 
+el
 # variable set hash-table stats:
 # Load=93/1024=9%, Rehash=0, Collisions=8/120=7%
 
-# Pattern-speci 
-fic Variable Values
+# Pattern-specific Variable Values
 
 # No pattern-specific variable values.
 
 # Directories
 
-# . (key c:/Users/LENOVO/Desktop/All Projects/Django/blog, mtime 1662879769): 25 files, no impossibilities.
+# . (key c:/Users/LENOVO/Desktop/All Projects/Django/blog, mtime 1671796342): 25 files, no impossibilities.
 
 # 25 files, no impossibilities in 1 directories.
 
@@ -237,7 +237,7 @@ lint:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-03 07:02:40
+#  Last modified 2022-08-03 06:02:40
 #  File has been updated.
 #  Successfully updated.
 
@@ -312,6 +312,6 @@ format:
 # strcache performance: lookups = 48 / hit rate = 25%
 # hash-table stats:
 # Load=36/8192=0%, Rehash=0, Collisions=0/48=0%
-# Finished Make data base on Sun Sep 18 23:05:23 2022
+# Finished Make data base on Fri Dec 23 11:31:30 2022
 
  
