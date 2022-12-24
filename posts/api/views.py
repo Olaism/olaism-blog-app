@@ -18,6 +18,6 @@ class PostCreateAPIView(generics.CreateAPIView):
 
 
 class PostDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Post.published.all()
+    queryset = Post.objects.all()
     serializer_class = PostDetailSerializer
     lookup_field = "slug"

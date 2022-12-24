@@ -9,10 +9,14 @@ from posts.models import Post
 
 
 class AuthorSerializer(serializers.ModelSerializer):
+    posts = serializers.SerializerMethodField()
 
     class Meta:
         model = get_user_model()
-        fields = ('username', 'email', 'last_login', 'is_staff')
+        fields = ('username', 'email', 'last_login', 'is_staff', 'posts')
+
+    def get_posts(self, obj):
+        return Post.objects.filter(author=obj).count()
 
 class PostCreateSerializer(TaggitSerializer, serializers.ModelSerializer):
     tags = TagListSerializerField()
@@ -31,11 +35,12 @@ class PostDetailSerializer(TaggitSerializer, serializers.ModelSerializer):
         model = Post
         lookup_field = 'slug'
         fields = ('id', 'title', 'highlight', 'author', 'image_url', 'publish', 'updated', 'body', 
-        'tags', 'status', 'featured', 'read_time', 'tags')
+        'tags', 'draft', 'featured', 'read_time', 'tags')
 
 class PostListSerializer(serializers.ModelSerializer):
     url = serializers.CharField(source='get_absolute_url', read_only=True)
+    author = serializers.StringRelatedField()
     class Meta:
         model = Post
         lookup_field = 'slug'
-        fields = ('id', 'title', 'url')
+        fields = ('id', 'title', 'url', 'author')

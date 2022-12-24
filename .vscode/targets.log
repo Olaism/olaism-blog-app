@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Dec 23 11:31:30 2022
+# Make data base, printed on Fri Dec 23 22:16:29 2022
 
 # Variables
 
@@ -37,7 +37,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_10752_IVKOWIICZZMYOPXK
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_3036_AMEZNWLTBYFWYNEE
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -85,7 +85,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 10752
+VSCODE_PID = 3036
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -197,8 +197,7 @@ ELECTRON_NO_ATTACH_CONSOLE = 1
 # environment
 PROCESSOR_REVISION = 4e03
 # environment
-PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 78 Stepping 3, GenuineInt 
-el
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 78 Stepping 3, GenuineIntel
 # variable set hash-table stats:
 # Load=93/1024=9%, Rehash=0, Collisions=8/120=7%
 
@@ -312,6 +311,6 @@ format:
 # strcache performance: lookups = 48 / hit rate = 25%
 # hash-table stats:
 # Load=36/8192=0%, Rehash=0, Collisions=0/48=0%
-# Finished Make data base on Fri Dec 23 11:31:30 2022
+# Finished Make data base on Fri Dec 23 22:16:29 2022
 
  

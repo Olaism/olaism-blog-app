@@ -12,14 +12,10 @@ from taggit.managers import TaggableManager
 
 class PublishedManager(models.Manager):
     def get_queryset(self):
-        return super(PublishedManager, self).get_queryset().filter(status='published')
+        return super(PublishedManager, self).get_queryset().filter(draft=False)
 
 
 class Post(models.Model):
-    STATUS_CHOICES = (
-        ('draft', 'Draft'),
-        ('published', 'Published'),
-    )
 
     title = models.CharField(max_length=100)
     highlight = models.CharField(max_length=255, default="", blank=True)
@@ -33,11 +29,7 @@ class Post(models.Model):
     publish = models.DateTimeField(default=timezone.now)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    status = models.CharField(
-        max_length=10, 
-        choices=STATUS_CHOICES,
-        default='draft'
-    )
+    draft = models.BooleanField('Save as draft', default=True)
     featured = models.BooleanField(default=False)
     read_time = models.PositiveIntegerField(default=0)
     tags = TaggableManager()
