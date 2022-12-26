@@ -21,7 +21,7 @@ class UserDetailView(DetailView):
     
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        context['published_posts'] = self.object.posts.filter(status='published')
+        context['published_posts'] = self.object.posts.filter(draft=False)
         return context
 
 class Profile(UpdateView):

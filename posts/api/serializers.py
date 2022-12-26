@@ -30,7 +30,8 @@ class PostCreateSerializer(TaggitSerializer, serializers.ModelSerializer):
 
 class PostDetailSerializer(TaggitSerializer, serializers.ModelSerializer):
     tags = TagListSerializerField()
-    author = AuthorSerializer(read_only=True)
+    author = serializers.StringRelatedField()
+    # author = AuthorSerializer(read_only=True)
     class Meta:
         model = Post
         lookup_field = 'slug'
@@ -43,4 +44,4 @@ class PostListSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         lookup_field = 'slug'
-        fields = ('id', 'title', 'url', 'author')
+        fields = ('id', 'title', 'highlight', 'url', 'author')

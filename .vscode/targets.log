@@ -8,7 +8,7 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Fri Dec 23 22:16:29 2022
+# Make data base, printed on Mon Dec 26 03:36:53 2022
 
 # Variables
 
@@ -37,7 +37,7 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_3036_AMEZNWLTBYFWYNEE
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_11852_PTIMVGFTBXIQVIQD
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -85,7 +85,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 3036
+VSCODE_PID = 11852
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -298,7 +298,8 @@ format:
 	python -m black config/*.py
 
 # files hash-table stats:
-# Load=12/1024=1%, Rehash=0, Collisions=0/22=0%
+# Load=12/1024=1%, Rehash=0 
+, Collisions=0/22=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
@@ -311,6 +312,6 @@ format:
 # strcache performance: lookups = 48 / hit rate = 25%
 # hash-table stats:
 # Load=36/8192=0%, Rehash=0, Collisions=0/48=0%
-# Finished Make data base on Fri Dec 23 22:16:29 2022
+# Finished Make data base on Mon Dec 26 03:36:53 2022
 
  

@@ -1,92 +1,193 @@
 {% load static gravatar %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!-- Font Awesome icon -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+      integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css" integrity="sha512-siwe/oXMhSjGCwLn+scraPOWrJxHlUgMBMZXdPe2Tnk3I0x3ESCoLz7WZ5NTH6SZrywMY+PB1cjyqJ5jAluCOg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css"
+      integrity="sha512-siwe/oXMhSjGCwLn+scraPOWrJxHlUgMBMZXdPe2Tnk3I0x3ESCoLz7WZ5NTH6SZrywMY+PB1cjyqJ5jAluCOg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" />
     <!-- Extra CSS -->
     {% block css %}{% endblock css %}
-    
+
     <title>{% block title %}Blog{% endblock title %}</title>
-</head>
-<body>
+  </head>
+  <body>
     {% block body %}
     <header class="p-3 mb-3 border-bottom">
       <div class="container-fluid">
-        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+        <div
+          class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom"
+        >
+          <a
+            href="/"
+            class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none"
+          >
             Blogify
           </a>
-  
-          <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-            <li><a href="{% url 'home' %}" class="nav-link px-2 link-secondary">Home</a></li>
-            <li><a href="{% url 'contact' %}" class="nav-link px-2 link-dark">Contact</a></li>
-            <li><a href="{% url 'post_create' %}" class="nav-link px-2 link-dark">New</a></li>
+
+          <ul
+            class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"
+          >
+            <li>
+              <a href="{% url 'home' %}" class="nav-link px-2 link-secondary"
+                ><i class="fa-brands fa-linkedin"></i></a
+              >
+            </li>
+            <li>
+              <a href="{% url 'contact' %}" class="nav-link px-2 link-dark"
+                ><i class="fa-brands fa-twitter"></i></a
+              >
+            </li>
+            <li>
+              <a href="{% url 'post_create' %}" class="nav-link px-2 link-dark"
+                ><i class="fa-brands fa-github"></i></a
+              >
+            </li>
           </ul>
-          
+
           {% if request.path == '/' %}
-          <form action="{% url 'post_search' %}" class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-            <input type="search" name="q" class="form-control" placeholder="Search..." aria-label="Search">
+          <form
+            action=""
+            class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
+            role="search"
+          >
+            <input
+              type="search"
+              name="q"
+              class="form-control"
+              placeholder="Search..."
+              aria-label="Search"
+            />
           </form>
-          {% endif %}
-  
-          {% if user.is_authenticated %}
+          {% endif %} {% if user.is_authenticated %}
           <div class="dropdown text-end">
-            <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              <img src="{{ user|gravatar }}" alt="mdo" width="32" height="32" class="rounded-circle">
+            <a
+              href="#"
+              class="d-block link-dark text-decoration-none dropdown-toggle"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              <img
+                src="{{ user|gravatar }}"
+                alt="mdo"
+                width="32"
+                height="32"
+                class="rounded-circle"
+              />
             </a>
             <ul class="dropdown-menu text-small">
-              <li><a class="dropdown-item" href="{% url 'my_profile' %}">Profile</a></li>
-              <li><a class="dropdown-item" href="{% url 'my_posts' %}">My Posts</a></li>
-              <li><a class="dropdown-item" href="{% url 'password_change' %}">Password Change</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+              <li>
+                <a class="dropdown-item" href="{% url 'my_profile' %}"
+                  >Profile</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'my_posts' %}"
+                  >My Posts</a
+                >
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'password_change' %}"
+                  >Password Change</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" href="{% url 'logout' %}">Sign out</a>
+              </li>
             </ul>
           </div>
           {% else %}
           <div class="text-end">
-            <a href="{% url 'login' %}" type="button" class="btn btn-outline-info me-2">Login</a>
-            <a href="{% url 'signup' %}" type="button" class="btn btn-warning">Sign-up</a>
+            <a
+              href="{% url 'login' %}"
+              type="button"
+              class="btn btn-outline-info me-2"
+              >Login</a
+            >
+            <a href="{% url 'signup' %}" type="button" class="btn btn-warning"
+              >Sign-up</a
+            >
           </div>
           {% endif %}
         </div>
       </div>
-      {% block header_tags %}
-      {% endblock header_tags %}
     </header>
-    <main class="container">
-      {% block content %}{% endblock content %}
-    </main>
+    {% include 'includes/navbar.html' %}
+    <main class="container">{% block content %}{% endblock content %}</main>
     <footer class="bg-secondary">
       <div class="container row justify-content-between">
         <div class="col-md-4 d-flex align-items-center">
-          <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-            <svg class="bi" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+          <a
+            href="/"
+            class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1"
+          >
+            <svg class="bi" width="30" height="24">
+              <use xlink:href="#bootstrap" />
+            </svg>
           </a>
           <span class="text-light">&copy; 2022 Olawuyi Ismail Ayodeji</span>
         </div>
-    
+
         <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
-            <li class="ms-3"><a class="text-white" href="https://www.olaism-portfolio.herokuapp.com"><i class="fa-solid fa-globe"></i></a></li>
-            <li class="ms-3"><a class="text-white" href="https://www.github.com/olaism"><i class="fa-brands fa-github"></i></a></li>
-            <li class="ms-3"><a class="text-white" href="https://www.linkedin.com/in/ismail-olawuyi-3ab475208"><i class="fa-brands fa-linkedin"></i></a></li>
-            <li class="ms-3"><a class="text-white" href="https://www.twitter.com/olaism01"><i class="fa-brands fa-twitter"></i></a></li>
+          <li class="ms-3">
+            <a
+              class="text-white"
+              href="https://www.olaism-portfolio.herokuapp.com"
+              ><i class="fa-solid fa-globe"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a class="text-white" href="https://www.github.com/olaism"
+              ><i class="fa-brands fa-github"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a
+              class="text-white"
+              href="https://www.linkedin.com/in/ismail-olawuyi-3ab475208"
+              ><i class="fa-brands fa-linkedin"></i
+            ></a>
+          </li>
+          <li class="ms-3">
+            <a class="text-white" href="https://www.twitter.com/olaism01"
+              ><i class="fa-brands fa-twitter"></i
+            ></a>
+          </li>
         </ul>
       </div>
     </footer>
     {% endblock body %}
     <!-- jS -->
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js" integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz" crossorigin="anonymous"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"
+      integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.min.js"
+      integrity="sha384-7VPbUDkoPSGFnVtYi0QogXtr74QeVeeIs99Qfg5YCF+TidwNdjvaKZX19NZ/e6oz"
+      crossorigin="anonymous"
+    ></script>
     <!-- Extra JS -->
     {% block js %}{% endblock js %}
-</body>
+  </body>
 </html>

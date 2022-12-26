@@ -10,6 +10,9 @@
         {% if tag %}
             <small class="mb-3 text-muted">Posts tagged with "{{ tag }}"</small>
         {% endif %}
+        {% if query %}
+            <small class="mb-3 text-muted">Your result for "{{ query }}"</small>
+        {% endif %}
         {% for post in posts %}
             <div class="col-md-6">
                 <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">

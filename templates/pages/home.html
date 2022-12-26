@@ -1,59 +1,42 @@
-{% extends '_base.html' %}
-
-{% load post_tags %}
-
-{% block title %}Home{% endblock %}
-
-{% block header_tags %}
-  <div class="nav-scroller py-1 mb-2">
-    <nav class="nav d-flex justify-content-between">
-      {% for tag in tags %}
-        <a class="p-2 link-secondary" href="/posts/?tag={{ tag.name|lower }}">{{ tag.name }}</a>
-      {% endfor %}
-    </nav>
+{% extends '_base.html' %} 
+{% block title %}Home{% endblock%} 
+{% block content %} 
+{% if featured %}
+<div class="row featured">
+  <div class="col-lg-6">
+    <img
+      src="{{ featured.image_url }}"
+      alt="{{ featured.title }}"
+      class="img-fluid featured-img"
+    />
   </div>
-{% endblock %}
-
-{% block content %}
-  {% if featured %}
-    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
-      <div class="col-md-6 px-0">
-        <h1 class="display-4 fst-italic">{{ featured.title }}</h1>
-        <p class="lead my-3">{{ featured.highlight }}</p>
-        <p class="lead mb-0"><a href="{{ featured.get_absolute_url }}" class="text-white fw-bold">Continue reading...</a></p>
+  <div class="col-lg-6">
+    <h6 class="text-muted">Editor's Pick</h6>
+    <h2>{{ featured.title }}</h2>
+    <p class="text-muted">{{ featured.highlight|truncatechars:200 }}</p>
+    <h6 class="author">{{ featured.author }}</h6>
+    <span class="text-small text-muted">{{ featured.updated|date:"M d" }}</span>
+    |
+    <span class="text-small text-muted">{{ featured.read_time }} mins.</span>
+  </div>
+</div>
+<section class="main-content">
+  <section class="content"></section>
+  <aside class="trends">
+    {% for post in most_popular %}
+    <div class="p-post">
+      <div class="figure">
+        {{ forloop.counter }}
+      </div>
+      <div class="p-body">
+        <h4>{{ post.title }}</h4>
+        <p>{{ post.author }} <span class="text-muted">in trending.</span></p>
+        <p class="text-muted">
+          {{ post.updated }} . {{ post.read_time }} min read
+        </p>
       </div>
     </div>
-  {% endif %}
-  
-  {% include 'includes/post_list.html' %}
-  {% if request.path == '/' %}
-  <div class="row g-5">
-    <div class="col-md-8">
-      <h3 class="pb-4 mb-4 fst-italic border-bottom">
-        From the Admin
-      </h3>
-      {% for post in admin_posts %}
-      <article class="blog-post">
-        <h2 class="blog-post-title mb-1">Sample blog post</h2>
-        <p class="blog-post-meta">January 1, 2021 by <a href="#">{{ post.author.username }}</a></p>
-
-        <p>{{ post.highlight }}</p>
-        <hr>
-        {{ post.body|truncatechars:400 }}
-      </article>
-      {% empty %}
-            <div class="alert alert-info" role="alert">No posts from admin yet ):</div>
-      {% endfor %}
-    </div>
-    <div class="col-md-4">
-      <div class="position-sticky" style="top: 2rem;">
-        <div class="p-4 mb-3 bg-light rounded">
-          {% show_latest_posts 5 %}
-        </div>
-      </div>
-    </div>
-  </div>
-  {% endif %}
-
-
-{% endblock content %}
+    {% endfor %}
+  </aside>
+</section>
+{% endif %} {% endblock content %}
