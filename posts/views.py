@@ -28,6 +28,7 @@ class PostDetailView(DetailView):
     def get_context_data(self, *args, **kwargs):
         post = self.get_object()
         context = super().get_context_data(*args, **kwargs)
+        post.views += 1
         post_tags_ids = post.tags.values_list('id', flat=True)
         similar_posts = Post.objects.filter(draft=False).filter(
             tags__in=post_tags_ids).exclude(id=post.id)

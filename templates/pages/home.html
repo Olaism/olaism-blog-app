@@ -1,4 +1,5 @@
 {% extends '_base.html' %} 
+{% load static %}
 {% block title %}Home{% endblock%} 
 {% block content %} 
 {% if featured %}
@@ -21,18 +22,34 @@
   </div>
 </div>
 <section class="main-content">
-  <section class="content"></section>
+  <section class="content">
+    <h4>Editor's Choice</h4>
+    {% for post in posts %}
+    <div class="post-card">
+      <img src="../../static/assets/balloons.jpg" alt="">
+      <div class="post-card-body">
+        <span class="category">Technology</span>
+        <a href="{{ post.get_absolute_url }}">
+        <h6>{{ post.title }}</h6>
+        <span class="post-date text-muted">{{ post.updated|date:"M d, Y" }}</span>
+        <p class="card-highlight">{{ post.highlight }}</p>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </section>
   <aside class="trends">
-    {% for post in most_popular %}
+    <h4>Trending</h4>
+    {% for post in posts %}
     <div class="p-post">
-      <div class="figure">
-        {{ forloop.counter }}
+      <div class="figure text-muted">
+        0{{ forloop.counter }}
       </div>
       <div class="p-body">
-        <h4>{{ post.title }}</h4>
-        <p>{{ post.author }} <span class="text-muted">in trending.</span></p>
-        <p class="text-muted">
-          {{ post.updated }} . {{ post.read_time }} min read
+        <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
+        <p class="p-post-author">{{ post.author }} <span class="text-muted">in trending.</span></p>
+        <p class="p-post-date text-muted">
+          {{ post.updated|date:"M d" }} . {{ post.read_time }} min read
         </p>
       </div>
     </div>
