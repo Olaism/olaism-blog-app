@@ -150,6 +150,7 @@ section.content h4 {
     display: inline-block;
     padding: 0.3rem;
     margin-bottom: 2rem;
+    min-width: 5rem;
 }
 
 .post-card-body span.post-date {

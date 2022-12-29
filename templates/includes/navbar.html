@@ -1,14 +1,14 @@
 <div class="nav-scroller py-1 mb-2">
     <nav class="nav d-flex justify-content-between">
-      <a class="p-2 link-secondary" href="#">HOME</a>
-      <a class="p-2 link-secondary" href="#">PROGRAMMING</a>
-      <a class="p-2 link-secondary" href="#">HTML</a>
-      <a class="p-2 link-secondary" href="#">CSS</a>
-      <a class="p-2 link-secondary" href="#">JAVASCRIPT</a>
-      <a class="p-2 link-secondary" href="#">PYTHON</a>
-      <a class="p-2 link-secondary" href="#">REACT</a>
-      <a class="p-2 link-secondary" href="#">DJANGO</a>
-      <a class="p-2 link-secondary" href="#">DATABASE</a>
-      <a class="p-2 link-secondary" href="#">GENERAL</a>
+      <a class="p-2 link-secondary" href="{% url 'home' %}">HOME</a>
+      <a class="p-2 link-secondary" href="{% url 'post_search_list' search_term='programming' %}">PROGRAMMING</a>
+      <a class="p-2 link-secondary" href="{% url 'post_tag_list' tag_slug='html' %}">HTML</a>
+      <a class="p-2 link-secondary" href="{% url 'post_tag_list' tag_slug='css' %}">CSS</a>
+      <a class="p-2 link-secondary" href="{% url 'post_tag_list' tag_slug='javascript' %}">JAVASCRIPT</a>
+      <a class="p-2 link-secondary" href="{% url 'post_tag_list' tag_slug='python' %}">PYTHON</a>
+      <a class="p-2 link-secondary" href="{% url 'post_tag_list' tag_slug='react' %}">REACT</a>
+      <a class="p-2 link-secondary" href="{% url 'post_tag_list' tag_slug='django' %}">DJANGO</a>
+      <a class="p-2 link-secondary" href="{% url 'post_tag_list' tag_slug='database' %}">DATABASE</a>
+      <a class="p-2 link-secondary" href="{% url 'post_tag_list' tag_slug='devops' %}">DEVOPS</a>
     </nav>
 </div>
