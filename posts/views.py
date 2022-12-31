@@ -19,6 +19,29 @@ from taggit.models import Tag
 from .models import Post
 from .forms import EmailPostForm
 
+class PostSearchView(ListView):
+    template_name = 'pages/posts.html'
+    model = Post
+    paginate_by = 10
+
+    def get_queryset(self):
+        query = self.request.GET.get('q') or None
+        if query:
+            posts = Post.published.filter(
+                Q(title__icontains=query) | Q(
+                    author__username__icontains=query)
+            )
+        else:
+            posts = Post.published.all()
+        return posts
+
+    def get_context_data(self, *args, **kwargs):
+        query = self.request.GET.get('q') or None
+        context = super().get_context_data(*args, **kwargs)
+        if query:
+            context['query'] = query
+        return context
+
 
 class PostDetailView(DetailView):
     model = Post

@@ -52,7 +52,6 @@ class PostListView(ListView):
             context['query'] = search_term
         return context
 
-
 class ContactPageView(FormView):
     template_name = 'pages/contact.html'
     form_class = ContactForm

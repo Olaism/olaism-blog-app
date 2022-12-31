@@ -5,11 +5,13 @@ from .views import (
     PostUpdateView,
     PostCreateView,
     PostDeleteView,
+    PostSearchView,
     MyPostsView,
     status_change,
 )
 
 urlpatterns = [
+    path('', PostSearchView.as_view(), name='post_search'),
     path('new/', PostCreateView.as_view(), name='post_create'),
     path('my-post/', MyPostsView.as_view(), name='my_posts'),
     path('<slug:slug>/status-change/', status_change, name='status_change'),
