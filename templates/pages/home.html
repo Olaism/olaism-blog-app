@@ -1,5 +1,5 @@
 {% extends '_base.html' %} 
-{% load static %}
+{% load static post_tags %}
 {% block title %}Home{% endblock%} 
 {% block content %} 
 {% if featured %}
@@ -40,20 +40,7 @@
   </section>
   <aside class="trends">
     <h4>Trending</h4>
-    {% for post in posts %}
-    <div class="p-post">
-      <div class="figure text-muted">
-        0{{ forloop.counter }}
-      </div>
-      <div class="p-body">
-        <h5><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h5>
-        <p class="p-post-author">{{ post.author }} <span class="text-muted">in trending.</span></p>
-        <p class="p-post-date text-muted">
-          {{ post.updated|date:"M d" }} . {{ post.read_time }} min read
-        </p>
-      </div>
-    </div>
-    {% endfor %}
+    {% show_trending_posts %}
   </aside>
 </section>
 {% endif %} {% endblock content %}

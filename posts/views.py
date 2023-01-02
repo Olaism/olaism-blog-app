@@ -19,17 +19,19 @@ from taggit.models import Tag
 from .models import Post
 from .forms import EmailPostForm
 
+
 class PostSearchView(ListView):
     template_name = 'pages/posts.html'
     model = Post
     paginate_by = 10
 
     def get_queryset(self):
-        query = self.request.GET.get('q') or None
+        query = self.request.GET.get('q')
         if query:
             posts = Post.published.filter(
-                Q(title__icontains=query) | Q(
-                    author__username__icontains=query)
+                Q(title__icontains=query) |
+                Q(author__username__icontains=query) |
+                Q(highlight__icontains=query)
             )
         else:
             posts = Post.published.all()
@@ -52,6 +54,7 @@ class PostDetailView(DetailView):
         post = self.get_object()
         context = super().get_context_data(*args, **kwargs)
         post.views += 1
+        post.save()
         post_tags_ids = post.tags.values_list('id', flat=True)
         similar_posts = Post.objects.filter(draft=False).filter(
             tags__in=post_tags_ids).exclude(id=post.id)
@@ -65,7 +68,7 @@ class PostDetailView(DetailView):
             if obj.draft and obj.author != self.request.user:
                 raise Http404
         else:
-            if obj.status == 'draft':
+            if obj.draft:
                 raise Http404
         return super().dispatch(request, *args, **kwargs)
 

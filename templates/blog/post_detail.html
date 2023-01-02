@@ -1,6 +1,6 @@
 {% extends '_base.html' %}
 
-{% load humanize %}
+{% load humanize markdown_extras %}
 
 {% block title %}Post: {{ post.title }}{% endblock %}
 
@@ -8,12 +8,12 @@
       <article class="blog-post">
         <h2 class="blog-post-title">{{ post.title|title }}</h2>
         <p class="blog-post-meta">By <a href="{{ post.author.get_absolute_url }}">{{ post.author|title }}</a> | 
-        <small class="text-muted">{{ post.publish|date:"M d, y" }}</small></p>
+        <small class="text-muted">{{ post.publish|date:"M d, Y" }}</small></p>
         {% if post.highlight %}
-          {{ post.highlight }}
+          <i>{{ post.highlight }}</i>
         {% endif %}
         <hr>
-        <p>{{ post.get_body_as_markdown }}</p>
+        <p>{{ post.body|markdown|safe }}</p>
       </article>
       <article class="mt-4 shadow-lg p-3 mb-5 bg-light rounded">
         <h6>Similar posts</h6>
@@ -23,7 +23,7 @@
               <div class="row justify-content-between">
                 <div class="col-6">
                   <a href="{{ post.get_absolute_url }}" class="text-muted">
-                    {{ post.title |title }}
+                    {{ post.title|title }}
                   </a> by 
                   <a href="{{ post.author.get_absolute_url }}">
                     {{ post.author }}

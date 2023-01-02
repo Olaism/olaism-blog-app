@@ -11,7 +11,7 @@ from .views import (
 )
 
 urlpatterns = [
-    path('', PostSearchView.as_view(), name='post_search'),
+    path('search/', PostSearchView.as_view(), name='post_search'),
     path('new/', PostCreateView.as_view(), name='post_create'),
     path('my-post/', MyPostsView.as_view(), name='my_posts'),
     path('<slug:slug>/status-change/', status_change, name='status_change'),
