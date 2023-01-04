@@ -41,6 +41,7 @@ django-taggit = "*"
 markdown = "*"
 django-rest-framework = "*"
 django-cors-headers = "*"
+django-filter = "*"
 
 [dev-packages]
 

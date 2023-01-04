@@ -8,10 +8,12 @@ make: *** No rule to make target 'all'.  Stop.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Tue Dec 27 21:10:12 2022
+# Make data base, printed on Wed Jan 04 13:14:46 2023
 
 # Variables
 
+# environment
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
 SYSTEMDRIVE = C:
 # environment
@@ -37,7 +39,9 @@ MAKE_COMMAND := C:/ProgramData/chocolatey/lib/make/tools/install/bin/make.exe
 # automatic
 @D = $(patsubst %/,%,$(patsubst %\,%,$(dir $@)))
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_6476_MQQSMJYDLCDMYNQE
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\LOCAL\crashpad_10924_HKJBVIJFMSEHFLOE
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # default
@@ -85,7 +89,7 @@ MAKEFILE_LIST := Makefile
 # automatic
 @F = $(notdir $@)
 # environment
-VSCODE_PID = 6476
+VSCODE_PID = 10924
 # automatic
 ?D = $(patsubst %/,%,$(patsubst %\,%,$(dir $?)))
 # automatic
@@ -199,7 +203,7 @@ PROCESSOR_REVISION = 4e03
 # environment
 PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 78 Stepping 3, GenuineIntel
 # variable set hash-table stats:
-# Load=93/1024=9%, Rehash=0, Collisions=8/120=7%
+# Load=95/1024=9%, Rehash=0, Collisions=9/122=7%
 
 # Pattern-specific Variable Values
 
@@ -253,6 +257,7 @@ validate-circleci:
 #  File has not been updated.
 #  recipe to execute (from 'Makefile', line 12):
 	circleci config validate
+ 
 
 # Not a target:
 .DEFAULT:
@@ -311,6 +316,6 @@ format:
 # strcache performance: lookups = 48 / hit rate = 25%
 # hash-table stats:
 # Load=36/8192=0%, Rehash=0, Collisions=0/48=0%
-# Finished Make data base on Tue Dec 27 21:10:12 2022
+# Finished Make data base on Wed Jan 04 13:14:46 2023
 
  
